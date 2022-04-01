@@ -1,6 +1,8 @@
 import { useEffect, useReducer } from "react";
+import { BrowserRouter } from "react-router-dom";
 import { AuthContext } from "./auth/authContext";
 import { authReducer } from "./auth/authReducer";
+import { AppRouter } from "./routers/AppRouter";
 
 const init = () => {
   return JSON.parse(localStorage.getItem('user') || '{"logged": false}')
@@ -17,9 +19,9 @@ function App() {
 
   return (
     <AuthContext.Provider value={{user, userDispatch}}>
-      <div>
-        <h1>Hello App</h1>      
-      </div>
+      <BrowserRouter>
+        <AppRouter/>
+      </BrowserRouter>
     </AuthContext.Provider>
   );
 }
