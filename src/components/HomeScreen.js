@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/axios';
+import axios from '../api/authApi';
 import { AuthContext } from '../auth/authContext'
 import { authTypes } from '../types/types';
 import MedicinesList from "./MedicinesList";

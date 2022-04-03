@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/axios'
+import authApi from '../api/authApi'
 import { AuthContext } from '../auth/authContext';
 import { useForm } from '../hooks/useForm'
 import { authTypes } from '../types/types';
@@ -22,7 +22,7 @@ export const LoginScreen = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    axios.post("users/token/", {
+    authApi.post("users/token/", {
       email,
       password,
     }).then((response) => {
@@ -57,7 +57,6 @@ export const LoginScreen = () => {
           type="text"
           placeholder="correo"
           name="email"
-          autoComplete='off'
           value={email}
           onChange={handleInputChange}
         />

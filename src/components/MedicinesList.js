@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import axios from "../api/axios";
+import axios from "../api/authApi";
 import {AuthContext} from "../auth/authContext";
+import authApi from "../api/authApi";
 
 const MedicinesList = () => {
 
@@ -10,7 +11,7 @@ const MedicinesList = () => {
   const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
-    axios.get("/medicines/medicines/", {
+    authApi.get("/medicines/medicines/", {
       headers: {
         'Authorization': `Bearer ${user.accessToken}`
       }
