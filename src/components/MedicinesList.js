@@ -12,8 +12,8 @@ const MedicinesList = () => {
   useEffect(() => {
     api.get("/medicines/medicines/")
       .then((response) => {
-        // setMedicines(response.data.results)
-        console.log(response.data.results);
+        setMedicines(response.data.results)
+        // console.log(response.data.results);
       })
       .catch((error) => {
         setMedicines(meds => []);
