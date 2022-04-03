@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import axios from "../api/authApi";
 import {AuthContext} from "../auth/authContext";
-import authApi from "../api/authApi";
+import api from "../api/api";
 
 const MedicinesList = () => {
 
@@ -11,14 +10,10 @@ const MedicinesList = () => {
   const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
-    authApi.get("/medicines/medicines/", {
-      headers: {
-        'Authorization': `Bearer ${user.accessToken}`
-      }
-    })
+    api.get("/medicines/medicines/")
       .then((response) => {
-        setMedicines(response.data.results)
-        // console.log(response.data.results);
+        // setMedicines(response.data.results)
+        console.log(response.data.results);
       })
       .catch((error) => {
         setMedicines(meds => []);
