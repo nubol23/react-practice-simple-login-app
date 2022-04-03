@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../auth/authContext";
 import api from "../api/api";
+import {authTypes} from "../types/types";
 
 const MedicinesList = () => {
 
-  const { user } = useContext(AuthContext);
+  const { userDispatch } = useContext(AuthContext);
 
   // Handling showing medicines
   const [medicines, setMedicines] = useState([]);
@@ -17,6 +18,11 @@ const MedicinesList = () => {
       })
       .catch((error) => {
         setMedicines(meds => []);
+
+        // If returned 401
+        if (error.response && error.response.status === 401)
+          userDispatch({ type: authTypes.logout });
+
       })
   }, [])
 
