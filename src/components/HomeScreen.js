@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/authApi';
 import { AuthContext } from '../auth/authContext'
 import { authTypes } from '../types/types';
 import MedicinesList from "./MedicinesList";
+import "./home.css"
 
 export const HomeScreen = () => {
 
@@ -18,14 +18,16 @@ export const HomeScreen = () => {
   }
 
   return (
-    <>
-      <div>HomeScreen</div>
-      <br />
-      <button onClick={handleLogout}>
-        Logout
-      </button>
-      <br />
+    <div className="home-box">
+      <div className="home-header">
+        <h3>HomeScreen</h3>
+        <br />
+        <button onClick={handleLogout} type="button" className="btn btn-warning">
+          Logout
+        </button>
+      </div>
+
       <MedicinesList/>
-    </>
+    </div>
   )
 }

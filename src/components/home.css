@@ -1,0 +1,16 @@
+.home-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    height: 100vh;
+}
+
+.home-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: lightseagreen;
+    padding: 10px;
+}
