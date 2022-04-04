@@ -1,13 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {AuthContext} from "../auth/authContext";
+import React, {useState} from 'react';
 import api from "../api/api";
-import {authTypes} from "../types/types";
 import "./medicinesList.css"
 import useRequest from "../hooks/useRequest";
 
 const MedicinesList = () => {
-
-  const { userDispatch } = useContext(AuthContext);
 
   // Handling showing medicines
   const [medicines, setMedicines] = useState([]);
@@ -15,12 +11,13 @@ const MedicinesList = () => {
   useRequest(
     api.get("/medicines/medicines/"),
     (response) => {
+      console.log("Resp")
       setMedicines(response.data.results);
     },
     (error) => {
+      console.log("Err")
       setMedicines(meds => []);
     },
-    userDispatch,
   )
 
   return (

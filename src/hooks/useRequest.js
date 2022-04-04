@@ -1,9 +1,12 @@
-import {useEffect} from "react";
-import api from "../api/api";
+import {useContext, useEffect} from "react";
 import {authTypes} from "../types/types";
+import {AuthContext} from "../auth/authContext";
 
 
-const useRequest = (httpRequest, resolveFunc, rejectFunc, userDispatch, deps=[]) => {
+const useRequest = (httpRequest, resolveFunc, rejectFunc, deps=[]) => {
+
+  const { userDispatch } = useContext(AuthContext);
+
   useEffect(() => {
     httpRequest
       .then((response) => {resolveFunc(response);})
