@@ -3,6 +3,7 @@ import {AuthContext} from "../auth/authContext";
 import api from "../api/api";
 import {authTypes} from "../types/types";
 import "./medicinesList.css"
+import useRequest from "../hooks/useRequest";
 
 const MedicinesList = () => {
 
@@ -11,21 +12,16 @@ const MedicinesList = () => {
   // Handling showing medicines
   const [medicines, setMedicines] = useState([]);
 
-  useEffect(() => {
-    api.get("/medicines/medicines/")
-      .then((response) => {
-        setMedicines(response.data.results)
-        // console.log(response.data.results);
-      })
-      .catch((error) => {
-        setMedicines(meds => []);
-
-        // If returned 401
-        if (error.response && error.response.status === 401)
-          userDispatch({ type: authTypes.logout });
-
-      })
-  }, [])
+  useRequest(
+    api.get("/medicines/medicines/"),
+    (response) => {
+      setMedicines(response.data.results);
+    },
+    (error) => {
+      setMedicines(meds => []);
+    },
+    userDispatch,
+  )
 
   return (
     <div className="table-box">
