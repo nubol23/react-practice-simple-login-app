@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {AuthContext} from "../auth/authContext";
 import api from "../api/api";
 import {authTypes} from "../types/types";
+import "./medicinesList.css"
 
 const MedicinesList = () => {
 
@@ -27,12 +28,25 @@ const MedicinesList = () => {
   }, [])
 
   return (
-    <div>
-      <ul>
+    <div className="table-box">
+      <table className="table table-hover medicine-table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
           {
-              medicines.map(medicine => <li key={medicine.id}>{medicine.name} - {medicine.id}</li>)
+            medicines.map(medicine => (
+              <tr key={medicine.id}>
+                <td>{medicine.id}</td>
+                <td>{medicine.name}</td>
+              </tr>
+            ))
           }
-      </ul>
+        </tbody>
+      </table>
     </div>
   );
 };

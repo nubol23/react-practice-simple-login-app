@@ -1,0 +1,15 @@
+.table-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.medicine-table {
+    min-width: 350px;
+    width: 40%;
+
+    /*padding: 20px;*/
+    margin-top: 30px;
+    /*width: 40%;*/
+}
