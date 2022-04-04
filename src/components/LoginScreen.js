@@ -5,6 +5,7 @@ import authApi from '../api/authApi'
 import { AuthContext } from '../auth/authContext';
 import { useForm } from '../hooks/useForm'
 import { authTypes } from '../types/types';
+import "./login.css"
 
 export const LoginScreen = () => {
 
@@ -49,11 +50,11 @@ export const LoginScreen = () => {
   }
 
   return (
-    <>
-      <div>LoginScreen</div>
+    <div className="login-box">
 
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="form-box">
         <input
+          className="form-control mb-4"
           type="text"
           placeholder="correo"
           name="email"
@@ -62,6 +63,7 @@ export const LoginScreen = () => {
         />
 
         <input
+          className="form-control mb-4"
           type="password"
           placeholder="contraseña"
           name="password"
@@ -70,7 +72,7 @@ export const LoginScreen = () => {
           onChange={handleInputChange}
         />
 
-        <button type='submit'>
+        <button type='submit' className="btn btn-primary btn-block">
           Login
         </button>
 
@@ -79,6 +81,6 @@ export const LoginScreen = () => {
           (message !== '') && <p>{message}</p>
         }
       </form>
-    </>
+    </div>
   )
 }
