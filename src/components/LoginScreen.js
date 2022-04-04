@@ -50,7 +50,7 @@ export const LoginScreen = () => {
   }
 
   return (
-    <div className="login-box">
+    <div className="login-box animate__animated animate__fadeIn">
 
       <form onSubmit={handleLogin} className="form-box">
         <input

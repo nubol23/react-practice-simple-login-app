@@ -18,7 +18,7 @@ export const HomeScreen = () => {
   }
 
   return (
-    <div className="home-box">
+    <div className="home-box animate__animated animate__fadeIn">
       <div className="home-header">
         <h3>HomeScreen</h3>
         <br />
